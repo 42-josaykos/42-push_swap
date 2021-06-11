@@ -6,7 +6,7 @@
 /*   By: jonny <josaykos@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 11:28:05 by jonny             #+#    #+#             */
-/*   Updated: 2021/05/03 14:39:06 by jonny            ###   ########.fr       */
+/*   Updated: 2021/06/11 19:25:58 by jonny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,5 @@ void	checker(t_lst *stack_a, char *inst)
 	}
 	else
 		ft_putendl_fd("KO", STDERR_FILENO);
-	// print_stacks(stack_a, stack_b);
 	free_stack(stack_b);
 }

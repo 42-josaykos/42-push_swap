@@ -6,7 +6,7 @@
 /*   By: jonny <josaykos@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 14:11:58 by jonny             #+#    #+#             */
-/*   Updated: 2021/05/04 12:14:13 by jonny            ###   ########.fr       */
+/*   Updated: 2021/06/11 19:29:33 by jonny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,14 @@ void	move_top(t_lst *stack_a, t_lst *stack_b, int *pos, char *buf)
 int	get_first(t_lst *a, int *tab, int i, int chunk_index)
 {
 	t_pointer	node_a;
-	init_pointer(a, &node_a);
-	int hold_first;
+	int			hold_first;
 
+	init_pointer(a, &node_a);
 	hold_first = -1;
 	while (node_a.ptr && node_a.pos <= a->len / 2)
 	{
-		if (node_a.ptr->nb >= tab[i] && node_a.ptr->nb <= tab[i + chunk_index - 1])
+		if (node_a.ptr->nb >= tab[i]
+			&& node_a.ptr->nb <= tab[i + chunk_index - 1])
 		{
 			hold_first = node_a.pos;
 			break ;
@@ -55,15 +56,16 @@ int	get_first(t_lst *a, int *tab, int i, int chunk_index)
 int	get_second(t_lst *a, int *tab, int i, int chunk_index)
 {
 	t_pointer	node_a;
-	init_pointer(a, &node_a);
-	int hold_second;
+	int			hold_second;
 
+	init_pointer(a, &node_a);
 	hold_second = -1;
 	node_a.ptr = a->tail;
-	node_a.pos = a->len - 1; 
+	node_a.pos = a->len - 1;
 	while (node_a.ptr && node_a.pos <= a->len / 2)
 	{
-		if (node_a.ptr->nb >= tab[i] && node_a.ptr->nb <= tab[i + chunk_index - 1])
+		if (node_a.ptr->nb >= tab[i]
+			&& node_a.ptr->nb <= tab[i + chunk_index - 1])
 		{
 			break ;
 		}
@@ -90,7 +92,6 @@ t_lst	*sort_b(t_lst *a, t_lst *b, char *buf)
 				while (node_b.pos)
 				{
 					exec_inst(b, NULL, RB, buf);
-					// print_stacks(a, b);
 					node_b.pos--;
 				}
 			}
@@ -99,18 +100,16 @@ t_lst	*sort_b(t_lst *a, t_lst *b, char *buf)
 				while (node_b.pos < b->len)
 				{
 					exec_inst(b, NULL, RRB, buf);
-					// print_stacks(a, b);
 					node_b.pos++;
 				}
 			}
 			exec_inst(b, a, PA, buf);
-			// print_stacks(a, b);
 			init_pointer(b, &node_b);
 			i--;
 			continue ;
 		}
 		node_b.ptr = node_b.ptr->next;
-		node_b.pos++; 
+		node_b.pos++;
 	}
 	free(tab);
 	return (a);
@@ -118,12 +117,12 @@ t_lst	*sort_b(t_lst *a, t_lst *b, char *buf)
 
 int	sort_a(t_lst *a, t_lst *b, char *buf)
 {
-	int *tab;
+	int	*tab;
 	int	i;
-	int nb_elem;
-	int hold_first;
-	int hold_second;
-	int chunk_index;
+	int	nb_elem;
+	int	hold_first;
+	int	hold_second;
+	int	chunk_index;
 
 	if (a->len == 100 || a->len == 500)
 		chunk_index = 25;

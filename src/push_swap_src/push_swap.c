@@ -6,20 +6,19 @@
 /*   By: jonny <josaykos@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 16:38:15 by jonny             #+#    #+#             */
-/*   Updated: 2021/05/04 11:36:28 by jonny            ###   ########.fr       */
+/*   Updated: 2021/06/11 19:26:12 by jonny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-int		*get_chunk_array(t_lst *stack)
+int	*get_chunk_array(t_lst *stack)
 {
 	int	*tab;
 
 	tab = ft_calloc(stack->len, sizeof(int));
 	to_array(stack, tab);
 	bubble_sort(tab, stack->len);
-	
 	return (tab);
 }
 
@@ -46,5 +45,4 @@ void	push_swap(t_lst *stack_a)
 		stack_b = NULL;
 	}
 	ft_putstr_fd(buf, STDOUT_FILENO);
-	// print_stacks(stack_a, stack_b);
 }
