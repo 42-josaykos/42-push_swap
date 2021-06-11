@@ -6,7 +6,7 @@
 /*   By: jonny <josaykos@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 14:11:58 by jonny             #+#    #+#             */
-/*   Updated: 2021/06/11 19:29:33 by jonny            ###   ########.fr       */
+/*   Updated: 2021/06/11 20:12:01 by jonny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,22 @@ t_lst	*sort_b(t_lst *a, t_lst *b, char *buf)
 	return (a);
 }	
 
+int	get_chunk_size(int len)
+{
+	int	i;
+
+	if (len == 100 || len == 500)
+		return (25);
+	i = len / 2;
+	while (i > 1)
+	{
+		if (len % i == 0)
+			return (i);
+		i--;
+	}
+	return (len);
+}
+
 int	sort_a(t_lst *a, t_lst *b, char *buf)
 {
 	int	*tab;
@@ -124,10 +140,7 @@ int	sort_a(t_lst *a, t_lst *b, char *buf)
 	int	hold_second;
 	int	chunk_index;
 
-	if (a->len == 100 || a->len == 500)
-		chunk_index = 25;
-	else
-		chunk_index = 10;
+	chunk_index = get_chunk_size(a->len);
 	tab = get_chunk_array(a);
 	nb_elem = a->len;
 	i = 0;

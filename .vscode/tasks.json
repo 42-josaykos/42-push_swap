@@ -1,0 +1,22 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "shell",
+      "label": "clang build",
+      "command": "clang",
+      "args": [
+        "src/push_swap_src/*.c",
+        "src/core_src/*.c",
+        "libft/libft.a",
+        "-g",
+        "-Iincludes",
+        "-Ilibft/includes"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    }
+  ]
+}
