@@ -6,7 +6,7 @@
 /*   By: jonny <josaykos@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 14:11:58 by jonny             #+#    #+#             */
-/*   Updated: 2021/06/11 20:12:01 by jonny            ###   ########.fr       */
+/*   Updated: 2021/06/14 10:44:17 by jonny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -185,9 +185,11 @@ int	sort_a(t_lst *a, t_lst *b, char *buf)
 */
 void	sort_3numbers(t_lst *stack, char *buf)
 {
-	int		next_nb;
 	int		tab[3];
 
+	tab[0] = 0;
+	tab[1] = 0;
+	tab[2] = 0;
 	to_array(stack, tab);
 	if (tab[0] > tab[1] && tab[2] > tab[0])
 		exec_inst(stack, NULL, SA, buf);
