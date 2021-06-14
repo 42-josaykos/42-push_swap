@@ -6,7 +6,7 @@
 /*   By: jonny <josaykos@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 14:11:58 by jonny             #+#    #+#             */
-/*   Updated: 2021/06/14 10:44:17 by jonny            ###   ########.fr       */
+/*   Updated: 2021/06/14 12:24:54 by jonny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	move_top(t_lst *stack_a, t_lst *stack_b, int *pos, char *buf)
 	{
 		while (*pos > 0)
 		{
-			exec_inst(stack_a, stack_b, RA, buf);
+			exec_inst(stack_a, stack_b, RA, &buf);
 			(*pos)--;
 		}
 	}
@@ -26,7 +26,7 @@ void	move_top(t_lst *stack_a, t_lst *stack_b, int *pos, char *buf)
 	{
 		while (*pos < stack_a->len)
 		{
-			exec_inst(stack_a, stack_b, RRA, buf);
+			exec_inst(stack_a, stack_b, RRA, &buf);
 			(*pos)++;
 		}
 	}
@@ -74,7 +74,7 @@ int	get_second(t_lst *a, int *tab, int i, int chunk_index)
 	return (hold_second);
 }
 
-t_lst	*sort_b(t_lst *a, t_lst *b, char *buf)
+t_lst	*sort_b(t_lst *a, t_lst *b, char **buf)
 {
 	int			*tab;
 	int			i;
@@ -131,7 +131,7 @@ int	get_chunk_size(int len)
 	return (len);
 }
 
-int	sort_a(t_lst *a, t_lst *b, char *buf)
+int	sort_a(t_lst *a, t_lst *b, char **buf)
 {
 	int	*tab;
 	int	i;
@@ -183,7 +183,7 @@ int	sort_a(t_lst *a, t_lst *b, char *buf)
 /*
 ** Simple algo to sort 3 numbers
 */
-void	sort_3numbers(t_lst *stack, char *buf)
+void	sort_3numbers(t_lst *stack, char **buf)
 {
 	int		tab[3];
 

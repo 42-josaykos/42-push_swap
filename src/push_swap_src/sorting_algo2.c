@@ -6,7 +6,7 @@
 /*   By: jonny <josaykos@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/26 09:52:48 by jonny             #+#    #+#             */
-/*   Updated: 2021/04/27 11:30:24 by jonny            ###   ########.fr       */
+/*   Updated: 2021/06/14 12:25:12 by jonny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	init_rotate_inst(enum e_inst *r, enum e_inst *rr, enum e_stack lst)
 	}
 }
 
-void	handle_pos(t_lst *stack, t_pointer *node, char *buf, enum e_stack lst)
+void	handle_pos(t_lst *stack, t_pointer *node, char **buf, enum e_stack lst)
 {
 	enum e_inst	rotate;
 	enum e_inst	reverse_rotate;
@@ -63,7 +63,7 @@ void	handle_pos(t_lst *stack, t_pointer *node, char *buf, enum e_stack lst)
 	}
 }
 
-void	sort_5numbers(t_lst *a, t_lst *b, char *buf)
+void	sort_5numbers(t_lst *a, t_lst *b, char **buf)
 {
 	int			next_nb;
 	t_pointer	node;
