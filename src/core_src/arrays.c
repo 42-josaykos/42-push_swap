@@ -6,12 +6,11 @@
 /*   By: jonny <josaykos@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/01 17:35:41 by jonny             #+#    #+#             */
-/*   Updated: 2021/04/26 09:59:58 by jonny            ###   ########.fr       */
+/*   Updated: 2021/06/14 09:56:12 by jonny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/utils.h"
-#include <pthread.h>
 
 int	strslen(char **array)
 {

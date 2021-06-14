@@ -6,7 +6,7 @@
 /*   By: jonny <josaykos@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 11:28:05 by jonny             #+#    #+#             */
-/*   Updated: 2021/06/11 19:25:58 by jonny            ###   ########.fr       */
+/*   Updated: 2021/06/14 09:55:55 by jonny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,7 @@ int	check_instructions(char *input)
 	{
 		if (!is_instruction(tmp[i]))
 		{
-			ft_putstr_fd(tmp[i], STDERR_FILENO);
-			ft_putendl_fd(" is not a valid instruction", STDERR_FILENO);
+			ft_putendl_fd("Error", STDERR_FILENO);
 			free_2darray(tmp);
 			return (1);
 		}
@@ -83,8 +82,6 @@ void	checker(t_lst *stack_a, char *inst)
 	if (!stack_b->len && is_sorted(stack_a, ASCENDING))
 	{
 		ft_putendl_fd("OK", STDOUT_FILENO);
-		ft_putstr_fd("Instructions = ", STDOUT_FILENO);
-		ft_putnbr_fd(nb_inst, STDOUT_FILENO);
 		write(1, "\n", 1);
 	}
 	else

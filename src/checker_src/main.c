@@ -29,6 +29,6 @@ int	main(int argc, char **argv)
 		free_all(stack_a, args, input);
 	}
 	else
-		ft_putendl_fd("No Argument", STDERR_FILENO);
+		ft_putendl_fd("Error", STDERR_FILENO);
 	return (EXIT_SUCCESS);
 }
