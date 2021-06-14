@@ -6,7 +6,7 @@
 /*   By: jonny <josaykos@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 16:38:15 by jonny             #+#    #+#             */
-/*   Updated: 2021/06/14 12:27:01 by jonny            ###   ########.fr       */
+/*   Updated: 2021/06/14 14:59:25 by jonny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,9 @@ void	push_swap(t_lst *stack_a)
 		return ;
 	init_stack(&stack_b, NULL);
 	get_median(stack_a);
-	if (stack_a->len <= 3)
+	if (stack_a->len < 3)
+		exec_inst(stack_a, NULL, SA, &buf);
+	else if (stack_a->len == 3)
 		sort_3numbers(stack_a, &buf);
 	else if (stack_a->len == 5)
 		sort_5numbers(stack_a, stack_b, &buf);
