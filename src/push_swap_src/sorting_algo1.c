@@ -6,11 +6,33 @@
 /*   By: jonny <josaykos@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 14:11:58 by jonny             #+#    #+#             */
-/*   Updated: 2021/06/15 11:00:51 by jonny            ###   ########.fr       */
+/*   Updated: 2021/06/15 11:12:34 by jonny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
+
+void	sort_b_loop(t_pointer *node_b, t_lst *b, t_lst *a, char **buf)
+{
+	if ((*node_b).pos <= b->len / 2)
+	{
+		while ((*node_b).pos)
+		{
+			exec_inst(b, NULL, RB, buf);
+			(*node_b).pos--;
+		}
+	}
+	else if ((*node_b).pos > b->len / 2)
+	{
+		while ((*node_b).pos < b->len)
+		{
+			exec_inst(b, NULL, RRB, buf);
+			(*node_b).pos++;
+		}
+	}
+	exec_inst(b, a, PA, buf);
+	init_pointer(b, node_b);
+}
 
 t_lst	*sort_b(t_lst *a, t_lst *b, char **buf)
 {
@@ -25,24 +47,7 @@ t_lst	*sort_b(t_lst *a, t_lst *b, char **buf)
 	{
 		if (node_b.ptr->nb == tab[i])
 		{
-			if (node_b.pos <= b->len / 2)
-			{
-				while (node_b.pos)
-				{
-					exec_inst(b, NULL, RB, buf);
-					node_b.pos--;
-				}
-			}
-			else if (node_b.pos > b->len / 2)
-			{
-				while (node_b.pos < b->len)
-				{
-					exec_inst(b, NULL, RRB, buf);
-					node_b.pos++;
-				}
-			}
-			exec_inst(b, a, PA, buf);
-			init_pointer(b, &node_b);
+			sort_b_loop(&node_b, b, a, buf);
 			i--;
 			continue ;
 		}
