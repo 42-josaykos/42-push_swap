@@ -6,7 +6,7 @@
 /*   By: jonny <josaykos@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 14:11:58 by jonny             #+#    #+#             */
-/*   Updated: 2021/06/15 11:12:34 by jonny            ###   ########.fr       */
+/*   Updated: 2021/06/15 11:26:38 by jonny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,18 +58,21 @@ t_lst	*sort_b(t_lst *a, t_lst *b, char **buf)
 	return (a);
 }	
 
-int	sort_a(t_lst *a, t_lst *b, char **buf)
+void	sort_a_loop_2()
 {
-	int	*tab;
+
+}
+
+void	sort_a_loop_1(t_lst *a, t_lst *b, int *tab, char **buf)
+{
 	int	i;
-	int	nb_elem;
 	int	hold_first;
 	int	hold_second;
+	int	nb_elem;
 	int	chunk_index;
 
-	chunk_index = get_chunk_size(a->len);
-	tab = get_chunk_array(a);
 	nb_elem = a->len;
+	chunk_index = get_chunk_size(a->len);
 	i = 0;
 	while (a->len > 0)
 	{
@@ -103,6 +106,15 @@ int	sort_a(t_lst *a, t_lst *b, char **buf)
 		else
 			i += chunk_index;
 	}
+
+}
+
+int	sort_a(t_lst *a, t_lst *b, char **buf)
+{
+	int	*tab;
+
+	tab = get_chunk_array(a);
+	sort_a_loop_1(a, b, tab, buf);
 	free(tab);
 	return (1);
 }	
