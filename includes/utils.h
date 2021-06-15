@@ -6,7 +6,7 @@
 /*   By: jonny <josaykos@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 11:24:23 by jonny             #+#    #+#             */
-/*   Updated: 2021/06/14 14:58:19 by jonny            ###   ########.fr       */
+/*   Updated: 2021/06/15 11:41:12 by jonny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,10 @@ struct	s_lst
 	t_node		*tail;
 	int			median;
 	size_t		len;
+	int			*tab;
+	int			chunk_index;
+	int			hold_first;
+	int			hold_second;
 };
 
 typedef struct s_data
