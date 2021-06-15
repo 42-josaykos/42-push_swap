@@ -6,7 +6,7 @@
 #    By: jonny <josaykos@student.42.fr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/26 15:36:59 by jonny             #+#    #+#              #
-#    Updated: 2021/06/11 18:59:22 by jonny            ###   ########.fr        #
+#    Updated: 2021/06/15 11:01:04 by jonny            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,7 @@ PUSHSWAP_SRC =	main.c \
 								push_swap.c \
 								sorting_algo1.c \
 								sorting_algo2.c \
+								sorting_algo3.c \
 								exec_inst.c \
 
 CORE_SRC = strings.c \
