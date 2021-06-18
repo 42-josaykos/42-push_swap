@@ -6,7 +6,7 @@
 /*   By: jonny <josaykos@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 11:13:41 by jonny             #+#    #+#             */
-/*   Updated: 2021/06/15 11:00:43 by jonny            ###   ########.fr       */
+/*   Updated: 2021/06/18 10:28:11 by jonny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ enum	e_stack
 void	linear_check(t_lst *stack_a, t_lst *stack_b, char *buf);
 void	push_swap(t_lst *stack_a);
 int		*get_chunk_array(t_lst *stack);
+void	get_chunk_array2(t_lst *stack);
 int		get_chunk_size(int len);
 int		get_first(t_lst *a, int *tab, int i, int chunk_index);
 int		get_second(t_lst *a, int *tab, int i, int chunk_index);

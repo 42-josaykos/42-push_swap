@@ -6,7 +6,7 @@
 /*   By: jonny <josaykos@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 16:38:15 by jonny             #+#    #+#             */
-/*   Updated: 2021/06/14 14:59:25 by jonny            ###   ########.fr       */
+/*   Updated: 2021/06/18 10:53:35 by jonny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,46 @@ int	*get_chunk_array(t_lst *stack)
 	bubble_sort(tab, stack->len);
 	return (tab);
 }
+
+void	get_chunk_array2(t_lst *stack)
+{
+	int	*tab;
+	int	i;
+	int j;
+	int k;
+	int nb;
+
+	tab = ft_calloc(stack->len, sizeof(int));
+	to_array(stack, tab);
+	bubble_sort(tab, stack->len);
+
+	stack->chunk_size = get_chunk_size(stack->len);
+	stack->chunk = ft_calloc(stack->chunk_size, sizeof(int));
+
+	i = 0;
+	nb = stack->len / stack->chunk_size;
+	if (stack->len % stack->chunk_size != 0)
+		nb++;
+	while(i < nb)
+	{
+		stack->chunk[i] = ft_calloc(stack->chunk_size, sizeof(int));
+		i++;
+	}
+	i = 0;
+	k = 0;
+	while (i < stack->chunk_size)
+	{
+		j = 0;
+		while (j < stack->chunk_size && k < stack->len)
+		{
+			stack->chunk[i][j] = tab[k];
+			j++;
+			k++;
+		}
+		i++;
+	}
+}
+
 
 void	push_swap(t_lst *stack_a)
 {
