@@ -6,7 +6,7 @@
 /*   By: jonny <josaykos@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 14:11:58 by jonny             #+#    #+#             */
-/*   Updated: 2021/06/18 11:03:54 by jonny            ###   ########.fr       */
+/*   Updated: 2021/06/18 11:46:04 by jonny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,14 +58,14 @@ t_lst	*sort_b(t_lst *a, t_lst *b, char **buf)
 	return (a);
 }	
 
-void	sort_a_loop_2(t_lst *a, t_lst *b, int i, char **buf)
+void	sort_a_loop_2(t_lst *a, t_lst *b, int *chunk, int size, char **buf)
 {
 	a->hold_first = 0;
 	a->hold_second = a->len - 1;
 	while (a->hold_first != -1 || a->hold_second != -1)
 	{
-		a->hold_first = get_first(a, a->tab, i, a->chunk_size);
-		a->hold_second = get_second(a, a->tab, i, a->chunk_size);
+		a->hold_first = get_first(a, chunk, size);
+		a->hold_second = get_second(a, chunk, size);
 		if (a->hold_first < a->len - a->hold_second)
 		{
 			while (a->hold_first)
@@ -90,19 +90,21 @@ void	sort_a_loop_2(t_lst *a, t_lst *b, int i, char **buf)
 void	sort_a_loop_1(t_lst *a, t_lst *b, char **buf)
 {
 	int	i;
-	int	nb_elem;
+	int	last_chunk;
+	int	max_chunks;
 
-	nb_elem = a->len;
-	a->chunk_size = get_chunk_size(a->len);
 	i = 0;
-	while (a->len > 0)
+	max_chunks = a->nb_chunks;
+	if (a->last_chunk_size != 0)
+		max_chunks = a->nb_chunks - 1;
+	while (i < max_chunks)
 	{
-		sort_a_loop_2(a, b, i, buf);
-		if (i + a->chunk_size >= nb_elem)
-			i += (nb_elem - 1);
-		else
-			i += a->chunk_size;
+		sort_a_loop_2(a, b, a->chunks[i], a->chunk_size, buf);
+		i++;
 	}
+	// if (a->last_chunk_size != 0)
+		// sort_a_loop_2(a, b, i, buf);
+
 }
 
 void	free_chunk_arrays(int **arrays)
@@ -124,7 +126,7 @@ int	sort_a(t_lst *a, t_lst *b, char **buf)
 
 	// a->tab = get_chunk_array(a);
 	get_chunk_array2(a);
-	// sort_a_loop_1(a, b, buf);
+	sort_a_loop_1(a, b, buf);
 	// free(a->tab);
 	free_chunk_arrays(a->chunks);
 	return (1);

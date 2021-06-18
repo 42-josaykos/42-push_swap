@@ -6,7 +6,7 @@
 /*   By: jonny <josaykos@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 11:24:23 by jonny             #+#    #+#             */
-/*   Updated: 2021/06/18 10:56:32 by jonny            ###   ########.fr       */
+/*   Updated: 2021/06/18 11:21:13 by jonny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,10 @@ struct	s_lst
 	int			chunk_size;
 	int			hold_first;
 	int			hold_second;
+	int			nb_chunks;
 	int			**chunks;
 	int			last_chunk_size;
+	int			list_size;
 };
 
 typedef struct s_data

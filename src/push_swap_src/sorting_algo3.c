@@ -6,7 +6,7 @@
 /*   By: jonny <josaykos@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/15 10:55:48 by jonny             #+#    #+#             */
-/*   Updated: 2021/06/18 10:46:44 by jonny            ###   ########.fr       */
+/*   Updated: 2021/06/18 12:25:37 by jonny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@ int	get_chunk_size(int len)
 {
 	int	i;
 
-	if (len >= 100)
+	if (len >= 200)
+		return (100);
+	else if (len >= 100)
 		return (25);
 	i = len / 2;
 	while (i > 1)
@@ -79,43 +81,54 @@ void	move_top(t_lst *stack_a, t_lst *stack_b, int *pos, char *buf)
 	*pos = 0;
 }
 
-int	get_first(t_lst *a, int *tab, int i, int chunk_index)
+int	get_first(t_lst *a, int *chunk, int size)
 {
 	t_pointer	node_a;
 	int			hold_first;
+	int			i;
 
 	init_pointer(a, &node_a);
 	hold_first = -1;
 	while (node_a.ptr && node_a.pos <= a->len / 2)
 	{
-		if (node_a.ptr->nb >= tab[i]
-			&& node_a.ptr->nb <= tab[i + chunk_index - 1])
+		i = 0;
+		while (i < size)
 		{
-			hold_first = node_a.pos;
-			break ;
+			if (node_a.ptr->nb == chunk[i])
+			{
+				hold_first = node_a.pos;
+				return (hold_first) ;
+			}
+			i++;
 		}
 		incr_pointer(&node_a);
 	}
 	return (hold_first);
 }
 
-int	get_second(t_lst *a, int *tab, int i, int chunk_index)
+int	get_second(t_lst *a, int *chunk, int size)
 {
 	t_pointer	node_a;
 	int			hold_second;
+	int			i;
 
 	init_pointer(a, &node_a);
 	hold_second = -1;
 	node_a.ptr = a->tail;
 	node_a.pos = a->len - 1;
-	while (node_a.ptr && node_a.pos <= a->len / 2)
+	while (node_a.ptr && node_a.pos >= a->len / 2)
 	{
-		if (node_a.ptr->nb >= tab[i]
-			&& node_a.ptr->nb <= tab[i + chunk_index - 1])
+		i = 0;
+		while (i < size)
 		{
-			break ;
+			if (node_a.ptr->nb == chunk[i])
+			{
+				hold_second = node_a.pos;
+				return (hold_second) ;
+			}
+			i++;
 		}
-		incr_pointer(&node_a);
+		decr_pointer(&node_a);
 	}
 	return (hold_second);
 }

@@ -6,11 +6,12 @@
 /*   By: jonny <josaykos@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/16 14:04:35 by jonny             #+#    #+#             */
-/*   Updated: 2021/06/14 14:43:46 by jonny            ###   ########.fr       */
+/*   Updated: 2021/06/18 12:23:03 by jonny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
+#include <unistd.h>
 
 void	exec_inst3(t_lst *src, t_lst *dst, enum e_inst inst, char **buf)
 {

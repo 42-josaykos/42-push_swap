@@ -6,7 +6,7 @@
 /*   By: jonny <josaykos@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/26 09:52:48 by jonny             #+#    #+#             */
-/*   Updated: 2021/06/14 12:25:12 by jonny            ###   ########.fr       */
+/*   Updated: 2021/06/18 11:56:52 by jonny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,12 @@ void	incr_pointer(t_pointer *node)
 {
 	node->ptr = node->ptr->next;
 	node->pos++;
+}
+
+void	decr_pointer(t_pointer *node)
+{
+	node->ptr = node->ptr->prev;
+	node->pos--;
 }
 
 void	init_rotate_inst(enum e_inst *r, enum e_inst *rr, enum e_stack lst)
