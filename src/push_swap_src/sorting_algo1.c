@@ -6,7 +6,7 @@
 /*   By: jonny <josaykos@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 14:11:58 by jonny             #+#    #+#             */
-/*   Updated: 2021/06/18 11:46:04 by jonny            ###   ########.fr       */
+/*   Updated: 2021/06/18 12:37:59 by jonny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,32 +102,16 @@ void	sort_a_loop_1(t_lst *a, t_lst *b, char **buf)
 		sort_a_loop_2(a, b, a->chunks[i], a->chunk_size, buf);
 		i++;
 	}
-	// if (a->last_chunk_size != 0)
-		// sort_a_loop_2(a, b, i, buf);
-
-}
-
-void	free_chunk_arrays(int **arrays)
-{
-	int i;
-
-	i = 0;
-	while (arrays[i])
-	{
-		free(arrays[i]);
-		i++;
-	}
-	free(arrays);
+	if (a->last_chunk_size != 0)
+		sort_a_loop_2(a, b, a->chunks[i], a->last_chunk_size, buf);
 }
 
 int	sort_a(t_lst *a, t_lst *b, char **buf)
 {
 	int	*tab;
 
-	// a->tab = get_chunk_array(a);
 	get_chunk_array2(a);
 	sort_a_loop_1(a, b, buf);
-	// free(a->tab);
 	free_chunk_arrays(a->chunks);
 	return (1);
 }	

@@ -6,7 +6,7 @@
 /*   By: jonny <josaykos@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/15 10:55:48 by jonny             #+#    #+#             */
-/*   Updated: 2021/06/18 12:25:37 by jonny            ###   ########.fr       */
+/*   Updated: 2021/06/18 12:35:40 by jonny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	get_chunk_size(int len)
 	int	i;
 
 	if (len >= 200)
-		return (100);
+		return (50);
 	else if (len >= 100)
 		return (25);
 	i = len / 2;
@@ -97,7 +97,7 @@ int	get_first(t_lst *a, int *chunk, int size)
 			if (node_a.ptr->nb == chunk[i])
 			{
 				hold_first = node_a.pos;
-				return (hold_first) ;
+				return (hold_first);
 			}
 			i++;
 		}
@@ -124,7 +124,7 @@ int	get_second(t_lst *a, int *chunk, int size)
 			if (node_a.ptr->nb == chunk[i])
 			{
 				hold_second = node_a.pos;
-				return (hold_second) ;
+				return (hold_second);
 			}
 			i++;
 		}

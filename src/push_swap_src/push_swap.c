@@ -6,7 +6,7 @@
 /*   By: jonny <josaykos@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 16:38:15 by jonny             #+#    #+#             */
-/*   Updated: 2021/06/18 12:22:33 by jonny            ###   ########.fr       */
+/*   Updated: 2021/06/18 12:37:35 by jonny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,24 +26,20 @@ void	get_chunk_array2(t_lst *stack)
 {
 	int	*tab;
 	int	i;
-	int j;
-	int k;
+	int	j;
+	int	k;
 
 	tab = ft_calloc(stack->len, sizeof(int));
 	to_array(stack, tab);
 	bubble_sort(tab, stack->len);
-
 	stack->chunk_size = get_chunk_size(stack->len);
-
 	stack->nb_chunks = stack->len / stack->chunk_size;
-	stack->last_chunk_size = stack->len % stack->chunk_size; 
+	stack->last_chunk_size = stack->len % stack->chunk_size;
 	if (stack->last_chunk_size)
 		stack->nb_chunks++;
-
 	stack->chunks = ft_calloc(stack->chunk_size, sizeof(int));
-
 	i = 0;
-	while(i < stack->nb_chunks)
+	while (i < stack->nb_chunks)
 	{
 		stack->chunks[i] = ft_calloc(stack->chunk_size, sizeof(int));
 		i++;
@@ -63,6 +59,24 @@ void	get_chunk_array2(t_lst *stack)
 	}
 }
 
+void	decr_pointer(t_pointer *node)
+{
+	node->ptr = node->ptr->prev;
+	node->pos--;
+}
+
+void	free_chunk_arrays(int **arrays)
+{
+	int	i;
+
+	i = 0;
+	while (arrays[i])
+	{
+		free(arrays[i]);
+		i++;
+	}
+	free(arrays);
+}
 
 void	push_swap(t_lst *stack_a)
 {
