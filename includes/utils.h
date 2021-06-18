@@ -6,7 +6,7 @@
 /*   By: jonny <josaykos@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 11:24:23 by jonny             #+#    #+#             */
-/*   Updated: 2021/06/18 11:21:13 by jonny            ###   ########.fr       */
+/*   Updated: 2021/06/18 13:48:04 by jonny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,6 @@ void	remove_head(t_lst *stack);
 void	remove_tail(t_lst *stack);
 int		is_sorted(t_lst *stack, enum e_order order);
 void	to_array(t_lst *stack, int *array);
-char	*ft_realloc(char **dst, char *to_add);
 
 /*
 ** swap, reverse_rotate, push

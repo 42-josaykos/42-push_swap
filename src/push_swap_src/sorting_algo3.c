@@ -6,7 +6,7 @@
 /*   By: jonny <josaykos@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/15 10:55:48 by jonny             #+#    #+#             */
-/*   Updated: 2021/06/18 12:35:40 by jonny            ###   ########.fr       */
+/*   Updated: 2021/06/18 13:45:39 by jonny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	get_chunk_size(int len)
 /*
 ** Simple algo to sort 3 numbers
 */
-void	sort_3numbers(t_lst *stack, char **buf)
+void	sort_3numbers(t_lst *stack)
 {
 	int		tab[3];
 
@@ -42,31 +42,31 @@ void	sort_3numbers(t_lst *stack, char **buf)
 	tab[2] = 0;
 	to_array(stack, tab);
 	if (tab[0] > tab[1] && tab[2] > tab[0])
-		exec_inst(stack, NULL, SA, buf);
+		exec_inst(stack, NULL, SA);
 	else if (tab[0] > tab[1] && tab[1] > tab[2])
 	{
-		exec_inst(stack, NULL, SA, buf);
-		exec_inst(stack, NULL, RRA, buf);
+		exec_inst(stack, NULL, SA);
+		exec_inst(stack, NULL, RRA);
 	}
 	else if (tab[0] > tab[1] && tab[0] > tab[2])
-		exec_inst(stack, NULL, RA, buf);
+		exec_inst(stack, NULL, RA);
 	else if (tab[1] > tab[0] && tab[1] > tab[2] && tab[0] < tab[2])
 	{
-		exec_inst(stack, NULL, SA, buf);
-		exec_inst(stack, NULL, RA, buf);
+		exec_inst(stack, NULL, SA);
+		exec_inst(stack, NULL, RA);
 	}
 	else if (tab[1] > tab[0] && tab[1] > tab[2] && tab[0] > tab[2])
-		exec_inst(stack, NULL, RRA, buf);
+		exec_inst(stack, NULL, RRA);
 	return ;
 }
 
-void	move_top(t_lst *stack_a, t_lst *stack_b, int *pos, char *buf)
+void	move_top(t_lst *stack_a, t_lst *stack_b, int *pos)
 {
 	if (*pos <= stack_a->len / 2)
 	{
 		while (*pos > 0)
 		{
-			exec_inst(stack_a, stack_b, RA, &buf);
+			exec_inst(stack_a, stack_b, RA);
 			(*pos)--;
 		}
 	}
@@ -74,7 +74,7 @@ void	move_top(t_lst *stack_a, t_lst *stack_b, int *pos, char *buf)
 	{
 		while (*pos < stack_a->len)
 		{
-			exec_inst(stack_a, stack_b, RRA, &buf);
+			exec_inst(stack_a, stack_b, RRA);
 			(*pos)++;
 		}
 	}

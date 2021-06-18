@@ -6,7 +6,7 @@
 /*   By: jonny <josaykos@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/26 09:52:48 by jonny             #+#    #+#             */
-/*   Updated: 2021/06/18 12:36:50 by jonny            ###   ########.fr       */
+/*   Updated: 2021/06/18 13:44:22 by jonny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	init_rotate_inst(enum e_inst *r, enum e_inst *rr, enum e_stack lst)
 	}
 }
 
-void	handle_pos(t_lst *stack, t_pointer *node, char **buf, enum e_stack lst)
+void	handle_pos(t_lst *stack, t_pointer *node, enum e_stack lst)
 {
 	enum e_inst	rotate;
 	enum e_inst	reverse_rotate;
@@ -48,7 +48,7 @@ void	handle_pos(t_lst *stack, t_pointer *node, char **buf, enum e_stack lst)
 	{
 		while (node->pos)
 		{
-			exec_inst(stack, NULL, rotate, buf);
+			exec_inst(stack, NULL, rotate);
 			node->pos--;
 		}
 	}
@@ -56,14 +56,14 @@ void	handle_pos(t_lst *stack, t_pointer *node, char **buf, enum e_stack lst)
 	{
 		while (node->pos < stack->len)
 		{
-			exec_inst(stack, NULL, reverse_rotate, buf);
+			exec_inst(stack, NULL, reverse_rotate);
 			node->pos++;
 		}
 		node->pos = 0;
 	}
 }
 
-void	sort_5numbers(t_lst *a, t_lst *b, char **buf)
+void	sort_5numbers(t_lst *a, t_lst *b)
 {
 	int			next_nb;
 	t_pointer	node;
@@ -73,16 +73,16 @@ void	sort_5numbers(t_lst *a, t_lst *b, char **buf)
 	{
 		if (node.ptr->nb < a->median)
 		{
-			handle_pos(a, &node, buf, A);
-			exec_inst(a, b, PB, buf);
+			handle_pos(a, &node, A);
+			exec_inst(a, b, PB);
 			node.ptr = a->head;
 			continue ;
 		}
 		incr_pointer(&node);
 	}
-	sort_3numbers(a, buf);
+	sort_3numbers(a);
 	if (b->head->nb < b->head->next->nb)
-		exec_inst(b, NULL, SB, buf);
+		exec_inst(b, NULL, SB);
 	while (b->len)
-		exec_inst(b, a, PA, buf);
+		exec_inst(b, a, PA);
 }

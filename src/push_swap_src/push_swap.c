@@ -6,7 +6,7 @@
 /*   By: jonny <josaykos@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 16:38:15 by jonny             #+#    #+#             */
-/*   Updated: 2021/06/18 13:28:26 by jonny            ###   ########.fr       */
+/*   Updated: 2021/06/18 13:40:41 by jonny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,27 +38,22 @@ void	free_chunk_arrays(int **arrays)
 void	push_swap(t_lst *stack_a)
 {
 	t_lst	*stack_b;
-	char	*buf;
 
 	stack_b = NULL;
-	buf = NULL;
 	if (is_sorted(stack_a, ASCENDING))
 		return ;
 	init_stack(&stack_b, NULL);
 	get_median(stack_a);
 	if (stack_a->len < 3)
-		exec_inst(stack_a, NULL, SA, &buf);
+		exec_inst(stack_a, NULL, SA);
 	else if (stack_a->len == 3)
-		sort_3numbers(stack_a, &buf);
+		sort_3numbers(stack_a);
 	else if (stack_a->len == 5)
-		sort_5numbers(stack_a, stack_b, &buf);
+		sort_5numbers(stack_a, stack_b);
 	else
 	{
-		sort_a(stack_a, stack_b, &buf);
-		stack_a = sort_b(stack_a, stack_b, &buf);
+		sort_a(stack_a, stack_b);
+		stack_a = sort_b(stack_a, stack_b);
 	}
 	free_stack(stack_b);
-	ft_putstr_fd(buf, STDOUT_FILENO);
-	if (buf)
-		free(buf);
 }
