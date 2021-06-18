@@ -6,7 +6,7 @@
 /*   By: jonny <josaykos@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 16:38:15 by jonny             #+#    #+#             */
-/*   Updated: 2021/06/18 10:53:35 by jonny            ###   ########.fr       */
+/*   Updated: 2021/06/18 10:57:52 by jonny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,16 @@ void	get_chunk_array2(t_lst *stack)
 	bubble_sort(tab, stack->len);
 
 	stack->chunk_size = get_chunk_size(stack->len);
-	stack->chunk = ft_calloc(stack->chunk_size, sizeof(int));
+	stack->chunks = ft_calloc(stack->chunk_size, sizeof(int));
 
 	i = 0;
 	nb = stack->len / stack->chunk_size;
-	if (stack->len % stack->chunk_size != 0)
+	stack->last_chunk_size = stack->len % stack->chunk_size; 
+	if (stack->last_chunk_size)
 		nb++;
 	while(i < nb)
 	{
-		stack->chunk[i] = ft_calloc(stack->chunk_size, sizeof(int));
+		stack->chunks[i] = ft_calloc(stack->chunk_size, sizeof(int));
 		i++;
 	}
 	i = 0;
@@ -53,7 +54,7 @@ void	get_chunk_array2(t_lst *stack)
 		j = 0;
 		while (j < stack->chunk_size && k < stack->len)
 		{
-			stack->chunk[i][j] = tab[k];
+			stack->chunks[i][j] = tab[k];
 			j++;
 			k++;
 		}

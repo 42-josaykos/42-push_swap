@@ -6,7 +6,7 @@
 /*   By: jonny <josaykos@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 11:24:23 by jonny             #+#    #+#             */
-/*   Updated: 2021/06/18 10:51:49 by jonny            ###   ########.fr       */
+/*   Updated: 2021/06/18 10:56:32 by jonny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ struct	s_lst
 	int			chunk_size;
 	int			hold_first;
 	int			hold_second;
-	int			**chunk;
+	int			**chunks;
 	int			last_chunk_size;
 };
 
