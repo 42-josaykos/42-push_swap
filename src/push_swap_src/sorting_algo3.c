@@ -6,7 +6,7 @@
 /*   By: jonny <josaykos@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/15 10:55:48 by jonny             #+#    #+#             */
-/*   Updated: 2021/06/18 13:45:39 by jonny            ###   ########.fr       */
+/*   Updated: 2021/06/18 14:06:51 by jonny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	get_chunk_size(int len)
 	if (len >= 200)
 		return (50);
 	else if (len >= 100)
-		return (25);
+		return (15);
 	i = len / 2;
 	while (i > 1)
 	{

@@ -4,7 +4,7 @@ COLOR_GREEN="\033[32m"
 COLOR_RESET="\033[39m"
 COLOR_YELLOW="\033[33m"
 
-nb_tests=10
+nb_tests=100
 
 function ProgressBar {
     let _progress=(${1}*100/${2}*100)/100
