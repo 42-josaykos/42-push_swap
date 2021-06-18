@@ -6,7 +6,7 @@
 /*   By: jonny <josaykos@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 16:38:15 by jonny             #+#    #+#             */
-/*   Updated: 2021/06/18 13:40:41 by jonny            ###   ########.fr       */
+/*   Updated: 2021/06/18 13:55:22 by jonny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,17 @@ int	*get_chunk_array(t_lst *stack)
 	return (tab);
 }
 
-void	free_chunk_arrays(int **arrays)
+void	free_chunk_arrays(t_lst *stack)
 {
 	int	i;
 
 	i = 0;
-	while (arrays[i])
+	while (i < stack->nb_chunks)
 	{
-		free(arrays[i]);
+		free(stack->chunks[i]);
 		i++;
 	}
-	free(arrays);
+	free(stack->chunks);
 }
 
 void	push_swap(t_lst *stack_a)

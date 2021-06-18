@@ -6,7 +6,7 @@
 /*   By: jonny <josaykos@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 13:27:55 by jonny             #+#    #+#             */
-/*   Updated: 2021/06/18 13:32:02 by jonny            ###   ########.fr       */
+/*   Updated: 2021/06/18 13:56:44 by jonny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ void	get_chunk_array2(t_lst *stack)
 		stack->nb_chunks++;
 	stack->chunks = ft_calloc(stack->chunk_size, sizeof(int));
 	get_chunk_array22(stack, tab);
+	free(tab);
 }
 
 void	decr_pointer(t_pointer *node)

@@ -6,7 +6,7 @@
 /*   By: jonny <josaykos@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 14:11:58 by jonny             #+#    #+#             */
-/*   Updated: 2021/06/18 13:42:35 by jonny            ###   ########.fr       */
+/*   Updated: 2021/06/18 13:55:31 by jonny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,6 @@ int	sort_a(t_lst *a, t_lst *b)
 
 	get_chunk_array2(a);
 	sort_a_loop_1(a, b);
-	free_chunk_arrays(a->chunks);
+	free_chunk_arrays(a);
 	return (1);
 }	

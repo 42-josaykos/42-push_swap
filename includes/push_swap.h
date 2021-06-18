@@ -6,7 +6,7 @@
 /*   By: jonny <josaykos@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 11:13:41 by jonny             #+#    #+#             */
-/*   Updated: 2021/06/18 13:44:35 by jonny            ###   ########.fr       */
+/*   Updated: 2021/06/18 13:55:49 by jonny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,6 @@ void	init_pointer(t_lst *stack, t_pointer *node);
 void	incr_pointer(t_pointer *node);
 void	decr_pointer(t_pointer *node);
 void	handle_pos(t_lst *stack, t_pointer *node, enum e_stack lst);
-void	free_chunk_arrays(int **arrays);
+void	free_chunk_arrays(t_lst *stack);
 
 #endif
