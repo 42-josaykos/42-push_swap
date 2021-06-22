@@ -6,7 +6,7 @@
 /*   By: jonny <josaykos@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 13:27:55 by jonny             #+#    #+#             */
-/*   Updated: 2021/06/18 13:56:44 by jonny            ###   ########.fr       */
+/*   Updated: 2021/06/22 13:49:19 by jonny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	get_chunk_array2(t_lst *stack)
 	stack->last_chunk_size = stack->len % stack->chunk_size;
 	if (stack->last_chunk_size)
 		stack->nb_chunks++;
-	stack->chunks = ft_calloc(stack->chunk_size, sizeof(int));
+	stack->chunks = ft_calloc(stack->nb_chunks, sizeof(int *));
 	get_chunk_array22(stack, tab);
 	free(tab);
 }
