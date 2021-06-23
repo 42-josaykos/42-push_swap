@@ -6,7 +6,7 @@
 /*   By: jonny <josaykos@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/15 10:55:48 by jonny             #+#    #+#             */
-/*   Updated: 2021/06/18 14:06:51 by jonny            ###   ########.fr       */
+/*   Updated: 2021/06/23 20:01:45 by jonny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,12 @@ int	get_chunk_size(int len)
 {
 	int	i;
 
-	if (len >= 200)
-		return (50);
-	else if (len >= 100)
+	if (len > 10 && len < 100)
+		return (10);
+	else if (len >= 100 && len < 200)
 		return (15);
-	i = len / 2;
-	while (i > 1)
-	{
-		if (len % i == 0)
-			return (i);
-		i--;
-	}
+	else if (len >= 200)
+		return (50);
 	return (len);
 }
 
@@ -37,9 +32,12 @@ void	sort_3numbers(t_lst *stack)
 {
 	int		tab[3];
 
-	tab[0] = 0;
-	tab[1] = 0;
-	tab[2] = 0;
+	ft_memset(tab, 0, 3);
+	if (stack->len < 3)
+	{
+		exec_inst(stack, NULL, SA);
+		return ;
+	}
 	to_array(stack, tab);
 	if (tab[0] > tab[1] && tab[2] > tab[0])
 		exec_inst(stack, NULL, SA);
@@ -57,7 +55,6 @@ void	sort_3numbers(t_lst *stack)
 	}
 	else if (tab[1] > tab[0] && tab[1] > tab[2] && tab[0] > tab[2])
 		exec_inst(stack, NULL, RRA);
-	return ;
 }
 
 void	move_top(t_lst *stack_a, t_lst *stack_b, int *pos)
