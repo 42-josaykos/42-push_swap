@@ -6,7 +6,7 @@
 /*   By: jonny <josaykos@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/02 15:18:33 by jonny             #+#    #+#             */
-/*   Updated: 2021/06/14 09:54:08 by jonny            ###   ########.fr       */
+/*   Updated: 2021/06/23 20:14:44 by jonny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ bool	has_duplicate(char **args)
 		j = 0;
 		while (args[j] && j < i)
 		{
-			if (ft_strncmp(args[i], args[j], ft_strlen(args[j]) + 1) == 0)
+			if (ft_atoi(args[i]) == ft_atoi(args[j]))
 				return (true);
 			j++;
 		}
